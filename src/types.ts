@@ -6,7 +6,8 @@ export interface Word {
   id: string
   hanzi: string // 간체 한자
   pinyin: string // 성조 기호 포함 병음
-  meaning: string // 한국어 뜻
+  meaning: string // 대표 뜻 (한국어 우선, 없으면 영어)
+  en?: string // 영어 뜻 (원 데이터셋)
   pos?: string // 품사 (명사, 동사 등)
   level: HskLevel
   example?: {

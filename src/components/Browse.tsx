@@ -24,11 +24,16 @@ export default function Browse() {
         (w) =>
           w.hanzi.includes(q) ||
           w.pinyin.toLowerCase().includes(q) ||
-          w.meaning.includes(q),
+          w.meaning.toLowerCase().includes(q) ||
+          (w.en?.toLowerCase().includes(q) ?? false),
       )
     }
     return list
   }, [filter, query, progress.favorites])
+
+  const LIMIT = 200
+  const shown = words.slice(0, LIMIT)
+  const truncated = words.length - shown.length
 
   return (
     <div className="view">
@@ -68,7 +73,7 @@ export default function Browse() {
             <p>단어가 없습니다.</p>
           </div>
         ) : (
-          words.map((w) => {
+          shown.map((w) => {
             const card = progress.cards[w.id]
             const m = card ? mastery(card) : 0
             const fav = progress.favorites.includes(w.id)
@@ -125,6 +130,11 @@ export default function Browse() {
           })
         )}
       </div>
+      {truncated > 0 && (
+        <p className="center small">
+          {shown.length}개 표시 중 · {truncated}개 더 있음 — 검색으로 좁혀보세요
+        </p>
+      )}
     </div>
   )
 }

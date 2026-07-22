@@ -113,6 +113,11 @@ export default function Flashcards({
               <div className="meaning" style={{ fontSize: 22 }}>
                 {word.meaning}
               </div>
+              {word.en && word.en !== word.meaning && (
+                <div className="small" style={{ maxWidth: 320 }}>
+                  {word.en}
+                </div>
+              )}
               {word.pos && <div className="pos">{word.pos}</div>}
               {speechSupported() && (
                 <button

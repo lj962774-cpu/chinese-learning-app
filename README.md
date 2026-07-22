@@ -7,7 +7,8 @@ HSK 기준 **필수 단어 학습** + **학습 커뮤니티(소통)** + 시중 �
 
 ## ✨ 주요 기능
 
-### 단어 학습 (HSK 1~6급)
+### 단어 학습 (HSK 1~6급 · 약 5,000단어 전체)
+- **HSK(구 2.0) 1~6급 전체 단어** 수록 (1급 150 · 2급 147 · 3급 298 · 4급 598 · 5급 1298 · 6급 2500)
 - **플래시카드 + 간격 반복 학습(SRS)** — Leitner 박스 방식으로 잊을 때쯤 다시 복습
 - **4지선다 퀴즈** — 레벨별/전체 실력 점검
 - **원어민 발음 듣기** — 브라우저 내장 Web Speech API(zh-CN), 별도 키 불필요
@@ -26,6 +27,13 @@ HSK 기준 **필수 단어 학습** + **학습 커뮤니티(소통)** + 시중 �
 - 글 작성, 좋아요, 댓글
 - 현재는 로컬 저장(localStorage)으로 동작 — `src/lib/community.ts` 계층만 교체하면
   Supabase/Firebase 등 실시간 백엔드로 확장 가능
+
+## 📖 데이터 출처
+HSK 단어의 한자·병음·영어 뜻은 오픈 데이터셋
+[complete-hsk-vocabulary](https://github.com/drkameleon/complete-hsk-vocabulary) (MIT,
+© Yanis Zafirópulos)을 기반으로 합니다 — `THIRD_PARTY_LICENSES.txt` 참고.
+한국어 뜻·예문은 일부 단어에 대해 앱에서 큐레이션했으며, 나머지는 영어 뜻을 표시합니다
+(점진적으로 한국어화 예정).
 
 ## 🛠 기술 스택
 - Vite + React 19 + TypeScript
