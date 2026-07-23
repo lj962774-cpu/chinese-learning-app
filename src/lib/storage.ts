@@ -18,6 +18,7 @@ export const defaultProgress: Progress = {
   todayCount: 0,
   todayDate: null,
   favorites: [],
+  mnemonics: {},
 }
 
 export const defaultSettings: Settings = {
@@ -32,7 +33,12 @@ export function loadProgress(): Progress {
     const raw = localStorage.getItem(PROGRESS_KEY)
     if (!raw) return { ...defaultProgress }
     const parsed = JSON.parse(raw) as Partial<Progress>
-    return { ...defaultProgress, ...parsed, cards: parsed.cards ?? {} }
+    return {
+      ...defaultProgress,
+      ...parsed,
+      cards: parsed.cards ?? {},
+      mnemonics: parsed.mnemonics ?? {},
+    }
   } catch {
     return { ...defaultProgress }
   }

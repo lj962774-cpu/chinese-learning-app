@@ -28,6 +28,7 @@ interface AppState {
   toggleFavorite: (wordId: string) => void
   updateSettings: (patch: Partial<Settings>) => void
   setDailyGoal: (n: number) => void
+  setMnemonic: (wordId: string, text: string, emoji: string) => void
   resetProgress: () => void
   getCard: (wordId: string) => CardState | undefined
 }
@@ -77,6 +78,13 @@ export function AppProvider({ children }: { children: ReactNode }) {
       updateSettings: (patch) => setSettings((prev) => ({ ...prev, ...patch })),
       setDailyGoal: (n) =>
         setProgress((prev) => ({ ...prev, dailyGoal: Math.max(5, n) })),
+      setMnemonic: (wordId, text, emoji) =>
+        setProgress((prev) => {
+          const next = { ...prev.mnemonics }
+          if (!text.trim() && !emoji.trim()) delete next[wordId]
+          else next[wordId] = { text: text.trim(), emoji: emoji.trim() }
+          return { ...prev, mnemonics: next }
+        }),
       resetProgress: () => setProgress({ ...defaultProgress }),
     }
   }, [progress, settings])

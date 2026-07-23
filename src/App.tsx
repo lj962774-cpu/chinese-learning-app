@@ -7,11 +7,19 @@ import Nav from './components/Nav'
 import Dashboard from './components/Dashboard'
 import Flashcards from './components/Flashcards'
 import Quiz from './components/Quiz'
+import Produce from './components/Produce'
 import Browse from './components/Browse'
 import Community from './components/Community'
 import Profile from './components/Profile'
 
-export type View = 'home' | 'learn' | 'quiz' | 'browse' | 'community' | 'profile'
+export type View =
+  | 'home'
+  | 'learn'
+  | 'quiz'
+  | 'produce'
+  | 'browse'
+  | 'community'
+  | 'profile'
 
 function Shell() {
   const [view, setView] = useState<View>('home')
@@ -40,6 +48,11 @@ function Shell() {
     setSessionKey((k) => k + 1)
     setView('quiz')
   }
+  function startProduce(level?: HskLevel) {
+    setFocusLevel(level)
+    setSessionKey((k) => k + 1)
+    setView('produce')
+  }
 
   function onNav(v: View) {
     if (v === 'learn') startLearn()
@@ -57,6 +70,7 @@ function Shell() {
         <Dashboard
           onLearn={startLearn}
           onQuiz={startQuiz}
+          onProduce={startProduce}
           onFavorites={startFavorites}
           onProfile={() => setView('profile')}
         />
@@ -71,6 +85,9 @@ function Shell() {
       )}
       {view === 'quiz' && (
         <Quiz key={sessionKey} level={focusLevel} onDone={() => setView('home')} />
+      )}
+      {view === 'produce' && (
+        <Produce key={sessionKey} level={focusLevel} onDone={() => setView('home')} />
       )}
       {view === 'browse' && <Browse />}
       {view === 'community' && <Community />}

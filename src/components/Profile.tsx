@@ -86,6 +86,27 @@ export default function Profile({ onBack }: { onBack: () => void }) {
         />
       </div>
 
+      <div className="section-title">학습 원리 (연구 기반)</div>
+      <div className="card" style={{ padding: 16 }}>
+        <p className="small" style={{ lineHeight: 1.7 }}>
+          이 앱은 어휘 학습 연구에서 효과가 검증된 방법을 따릅니다:
+        </p>
+        <ul className="small" style={{ lineHeight: 1.8, paddingLeft: 18, marginTop: 6 }}>
+          <li>
+            🎴 <b>간격 반복</b> — 잊을 때쯤 다시 복습 (간격이 점점 늘어남)
+          </li>
+          <li>
+            ⌨️ <b>인출·산출 연습</b> — 보기만 하지 않고 직접 떠올려 입력 (재인보다 회상이 효과적)
+          </li>
+          <li>
+            💭 <b>연상 암기 + 이미지</b> — 나만의 키워드·이모지로 이중부호화 (회상률 크게 향상)
+          </li>
+          <li>
+            🔊 <b>발음·예문</b> — 소리와 맥락을 함께 학습
+          </li>
+        </ul>
+      </div>
+
       <div className="section-title">데이터</div>
       <div className="card" style={{ padding: 16 }}>
         <p className="small" style={{ marginBottom: 12 }}>
