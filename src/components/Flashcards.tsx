@@ -4,6 +4,7 @@ import { useApp } from '../context/AppContext'
 import { buildQueue } from '../lib/session'
 import { speak, speechSupported } from '../lib/speech'
 import { levelLabel } from '../lib/levels'
+import MnemonicEditor from './MnemonicEditor'
 
 export default function Flashcards({
   level,
@@ -138,6 +139,7 @@ export default function Flashcards({
                   <div className="ex-mn">{word.example.meaning}</div>
                 </div>
               )}
+              <MnemonicEditor wordId={word.id} />
             </>
           )}
         </div>

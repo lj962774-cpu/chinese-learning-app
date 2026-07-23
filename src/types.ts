@@ -36,6 +36,13 @@ export interface Progress {
   todayCount: number
   todayDate: string | null
   favorites: string[] // 즐겨찾기한 단어 id
+  // 연상 암기(키워드법 + 이중부호화): 단어별 사용자 메모와 이모지
+  mnemonics: Record<string, Mnemonic>
+}
+
+export interface Mnemonic {
+  text: string // 연상 메모(모국어 키워드 등)
+  emoji: string // 시각 단서(이중부호화)
 }
 
 export interface Settings {
