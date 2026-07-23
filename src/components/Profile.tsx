@@ -102,6 +102,9 @@ export default function Profile({ onBack }: { onBack: () => void }) {
             💭 <b>연상 암기 + 이미지</b> — 나만의 키워드·이모지로 이중부호화 (회상률 크게 향상)
           </li>
           <li>
+            📝 <b>맥락 학습(빈칸 채우기)</b> — 예문 속에서 단어를 인출
+          </li>
+          <li>
             🔊 <b>발음·예문</b> — 소리와 맥락을 함께 학습
           </li>
         </ul>

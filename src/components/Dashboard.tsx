@@ -7,12 +7,14 @@ export default function Dashboard({
   onLearn,
   onQuiz,
   onProduce,
+  onCloze,
   onFavorites,
   onProfile,
 }: {
   onLearn: (level?: HskLevel) => void
   onQuiz: (level?: HskLevel) => void
   onProduce: (level?: HskLevel) => void
+  onCloze: (level?: HskLevel) => void
   onFavorites: () => void
   onProfile: () => void
 }) {
@@ -89,6 +91,11 @@ export default function Dashboard({
           <div className="ico">⌨️</div>
           <div className="t">생산 퀴즈</div>
           <div className="d">병음 직접 입력 (회상↑)</div>
+        </button>
+        <button className="action" onClick={() => onCloze()}>
+          <div className="ico">📝</div>
+          <div className="t">빈칸 채우기</div>
+          <div className="d">예문 맥락 학습</div>
         </button>
         <button className="action" onClick={onFavorites}>
           <div className="ico">⭐</div>
