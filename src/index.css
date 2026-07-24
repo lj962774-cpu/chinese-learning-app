@@ -674,3 +674,171 @@ label {
 .fav-star.on {
   color: var(--gold);
 }
+
+/* ================= 언어 선택 / 일본어 트랙 ================= */
+.lang-switch {
+  display: flex;
+  gap: 8px;
+  background: var(--surface-2);
+  border-radius: 999px;
+  padding: 4px;
+}
+.lang-switch button {
+  flex: 1;
+  padding: 9px 12px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-dim);
+  transition: all 0.15s ease;
+}
+.lang-switch button.on {
+  background: var(--brand);
+  color: #fff;
+  box-shadow: var(--shadow);
+}
+
+/* 세그먼트 토글(스크립트/방향) */
+.seg {
+  display: flex;
+  gap: 8px;
+  background: var(--surface-2);
+  border-radius: 12px;
+  padding: 4px;
+}
+.seg button {
+  flex: 1;
+  padding: 9px 8px;
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-dim);
+}
+.seg button.on {
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: var(--shadow);
+}
+
+/* 가나표 */
+.kana-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin-top: 8px;
+}
+.kana-cell {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  border-radius: 12px;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  box-shadow: var(--shadow);
+  transition: all 0.12s ease;
+}
+.kana-cell.sel {
+  border-color: var(--brand);
+  background: var(--brand-soft);
+}
+.kana-cell .kc-char {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+}
+.kana-cell .kc-romaji {
+  font-size: 11px;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+.kana-cell .kc-dot {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+}
+.kana-detail {
+  margin-top: 16px;
+  text-align: center;
+}
+.kana-detail .kd-char {
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+.kana-detail .kd-romaji {
+  color: var(--brand);
+  font-size: 22px;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+/* 가나·단어 플래시카드 대형 글자 */
+.kana-big {
+  font-size: 88px;
+  font-weight: 700;
+  line-height: 1.05;
+}
+.jp-word {
+  font-size: 46px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+/* 가나 퀴즈 옵션 2열 그리드 */
+.opt-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.opt-grid .opt {
+  text-align: center;
+  margin-bottom: 0;
+  font-size: 22px;
+}
+
+/* 일본어 홈 가나 진도 */
+.kana-prog {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.kp-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.kp-row .kp-name {
+  width: 96px;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.kp-row .bar {
+  flex: 1;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  overflow: hidden;
+}
+.kp-row .bar span {
+  display: block;
+  height: 100%;
+  background: var(--brand);
+  border-radius: 999px;
+}
+.kp-row .cnt {
+  font-size: 12px;
+  color: var(--text-dim);
+  font-weight: 700;
+  width: 54px;
+  text-align: right;
+  flex-shrink: 0;
+}

@@ -2,6 +2,7 @@ import type { HskLevel } from '../types'
 import { LEVELS, wordsByLevel } from '../data/hsk'
 import { useApp, useStats } from '../context/AppContext'
 import { levelColor, levelLabel } from '../lib/levels'
+import { LangSwitch } from '../lang'
 
 export default function Dashboard({
   onLearn,
@@ -24,9 +25,10 @@ export default function Dashboard({
 
   return (
     <div className="view">
+      <LangSwitch />
       <div
         className="row-between"
-        style={{ marginBottom: 14 }}
+        style={{ marginBottom: 14, marginTop: 12 }}
       >
         <div>
           <div className="small">

@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import type { HskLevel } from './types'
 import { AppProvider } from './context/AppContext'
+import { LangProvider, useLang } from './lang'
 import { warmUpVoices } from './lib/speech'
+import JpApp from './jp/JpApp'
 import TopBar from './components/TopBar'
 import Nav from './components/Nav'
 import Dashboard from './components/Dashboard'
@@ -109,10 +111,21 @@ function Shell() {
   )
 }
 
-export default function App() {
+// 언어에 따라 중국어 트랙(기존) / 일본어 트랙 분기
+function Root() {
+  const { lang } = useLang()
+  if (lang === 'jp') return <JpApp />
   return (
     <AppProvider>
       <Shell />
     </AppProvider>
+  )
+}
+
+export default function App() {
+  return (
+    <LangProvider>
+      <Root />
+    </LangProvider>
   )
 }
