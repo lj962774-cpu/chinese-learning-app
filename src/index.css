@@ -842,3 +842,218 @@ label {
   text-align: right;
   flex-shrink: 0;
 }
+
+/* ================= UX/UI 폴리시 레이어 ================= */
+
+:root {
+  --ring: color-mix(in srgb, var(--brand) 40%, transparent);
+}
+
+/* 키보드 포커스 링(마우스 클릭 시엔 안 보이게 focus-visible 사용) */
+button:focus-visible,
+a:focus-visible,
+[tabindex]:focus-visible,
+.flashcard:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--ring);
+}
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--ring);
+  border-color: var(--brand);
+}
+
+/* 아이콘 버튼 / 아이콘+텍스트 정렬 */
+.icon-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  color: var(--text-dim);
+  transition: background 0.18s ease, color 0.18s ease;
+}
+.icon-btn:active {
+  transform: scale(0.94);
+}
+.btn-ico {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.chip {
+  align-items: center;
+}
+.chip svg {
+  display: block;
+}
+.chip.fire svg {
+  color: var(--gold);
+}
+.chip.xp svg {
+  color: var(--brand);
+}
+
+/* 액션 타일 아이콘: 브랜드 톤 둥근 사각 컨테이너 */
+.action .ico {
+  width: 44px;
+  height: 44px;
+  border-radius: 13px;
+  display: grid;
+  place-items: center;
+  background: var(--brand-soft);
+  color: var(--brand);
+  font-size: 0;
+  transition: transform 0.16s ease;
+}
+.action.due .ico {
+  background: color-mix(in srgb, var(--brand) 16%, var(--surface));
+}
+
+/* grade 버튼(아이콘 + 텍스트) */
+.grade-row .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* 하단 네비: 활성 탭에 알약 인디케이터 */
+.nav button .ni {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 30px;
+  border-radius: 999px;
+  transition: background 0.18s ease, transform 0.16s ease;
+}
+.nav button.active .ni {
+  background: var(--brand-soft);
+}
+.nav button:active .ni {
+  transform: scale(0.9);
+}
+
+/* 뒤로가기/상단 버튼 터치 영역 확보 */
+.flash-top button {
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 4px;
+  border-radius: 8px;
+}
+
+/* ---- 데스크톱 hover 상태 (터치 기기에서는 미적용) ---- */
+@media (hover: hover) and (pointer: fine) {
+  .action:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+  .action:hover .ico {
+    transform: scale(1.06);
+  }
+  .card.stat {
+    transition: transform 0.16s ease, box-shadow 0.16s ease;
+  }
+  .card.stat:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+  .btn.primary:hover {
+    filter: brightness(1.06);
+  }
+  .btn.right:hover {
+    filter: brightness(1.06);
+  }
+  .btn.ghost:hover,
+  .btn.wrong:hover {
+    background: var(--surface-2);
+  }
+  .opt:not(:disabled):hover {
+    border-color: var(--brand);
+    transform: translateY(-1px);
+  }
+  .kana-cell:hover {
+    border-color: var(--brand);
+    transform: translateY(-2px);
+  }
+  .level-row:hover {
+    background: var(--surface-2);
+  }
+  .icon-btn:hover {
+    background: var(--surface-2);
+    color: var(--text);
+  }
+  .seg button:hover:not(.on),
+  .lang-switch button:hover:not(.on) {
+    color: var(--text);
+  }
+}
+.level-row {
+  transition: background 0.16s ease;
+  border-radius: 10px;
+}
+
+/* ---- 플래시카드 3D 플립 ---- */
+.flashcard {
+  perspective: 1400px;
+}
+.fc-face {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  width: 100%;
+  transform-origin: center center;
+  animation: fcFlip 0.4s cubic-bezier(0.2, 0.75, 0.25, 1) both;
+  will-change: transform, opacity;
+}
+@keyframes fcFlip {
+  from {
+    transform: rotateY(-82deg);
+    opacity: 0;
+  }
+  to {
+    transform: rotateY(0);
+    opacity: 1;
+  }
+}
+
+/* ---- 진입 시 그리드 타일 스태거 ---- */
+@media (prefers-reduced-motion: no-preference) {
+  .action-grid .action {
+    animation: riseIn 0.42s cubic-bezier(0.2, 0.7, 0.25, 1) both;
+  }
+  .action-grid .action:nth-child(1) { animation-delay: 0.02s; }
+  .action-grid .action:nth-child(2) { animation-delay: 0.07s; }
+  .action-grid .action:nth-child(3) { animation-delay: 0.12s; }
+  .action-grid .action:nth-child(4) { animation-delay: 0.17s; }
+  .action-grid .action:nth-child(5) { animation-delay: 0.22s; }
+  .action-grid .action:nth-child(6) { animation-delay: 0.27s; }
+}
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---- 접근성: 모션 최소화 선호 존중 ---- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

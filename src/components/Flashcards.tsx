@@ -5,6 +5,7 @@ import { buildQueue } from '../lib/session'
 import { speak, speechSupported } from '../lib/speech'
 import { levelLabel } from '../lib/levels'
 import MnemonicEditor from './MnemonicEditor'
+import Icon from './Icon'
 
 export default function Flashcards({
   level,
@@ -93,6 +94,7 @@ export default function Flashcards({
         </div>
 
         <div className="flashcard" onClick={() => setFlipped((f) => !f)}>
+          <div className="fc-face" key={flipped ? 'back' : 'front'}>
           {!flipped ? (
             meaningFirst ? (
               <>
@@ -129,7 +131,7 @@ export default function Flashcards({
                   }}
                   aria-label="발음 듣기"
                 >
-                  🔊
+                  <Icon name="speaker" size={20} />
                 </button>
               )}
               {word.example && (
@@ -142,15 +144,16 @@ export default function Flashcards({
               <MnemonicEditor wordId={word.id} />
             </>
           )}
+          </div>
         </div>
 
         {flipped ? (
           <div className="grade-row">
             <button className="btn wrong" onClick={() => grade(false)}>
-              ✗ 또 볼래요
+              <Icon name="close" size={18} /> 또 볼래요
             </button>
             <button className="btn right" onClick={() => grade(true)}>
-              ✓ 외웠어요
+              <Icon name="check" size={18} /> 외웠어요
             </button>
           </div>
         ) : (
