@@ -3,6 +3,7 @@ import type { KanaScript } from './types'
 import { KANA_GROUPS, kanaBy } from './data'
 import { speakJa, speechSupported } from '../lib/speech'
 import { useJp } from './JpContext'
+import Icon from '../components/Icon'
 
 // 가나표: 스크립트(히라가나/가타카나)별로 그룹을 나눠 보여준다. 탭하면 발음 재생 + 예시.
 export default function KanaChart({ onBack }: { onBack: () => void }) {
@@ -74,8 +75,8 @@ export default function KanaChart({ onBack }: { onBack: () => void }) {
               </div>
             )}
             {speechSupported() && (
-              <button className="btn ghost" style={{ marginTop: 10 }} onClick={() => speakJa(k.ex?.word ?? k.kana)}>
-                🔊 발음 듣기
+              <button className="btn ghost btn-ico" style={{ marginTop: 10 }} onClick={() => speakJa(k.ex?.word ?? k.kana)}>
+                <Icon name="speaker" size={18} /> 발음 듣기
               </button>
             )}
           </div>

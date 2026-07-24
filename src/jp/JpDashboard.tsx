@@ -2,6 +2,7 @@ import type { KanaScript } from './types'
 import { JP_WORDS, KANA, kanaBy } from './data'
 import { useJp } from './JpContext'
 import { LangSwitch } from '../lang'
+import Icon from '../components/Icon'
 
 // 일본어 홈: 가나(히라가나·가타카나) 진도 + N5 단어 진도 + 학습 진입.
 export default function JpDashboard({
@@ -75,22 +76,22 @@ export default function JpDashboard({
 
       <div className="action-grid" style={{ marginTop: 12 }}>
         <button className="action" onClick={onKanaChart}>
-          <div className="ico">📋</div>
+          <div className="ico"><Icon name="grid" /></div>
           <div className="t">가나표</div>
           <div className="d">전체 표 + 발음 듣기</div>
         </button>
         <button className="action" onClick={onKanaQuiz}>
-          <div className="ico">✏️</div>
+          <div className="ico"><Icon name="quiz" /></div>
           <div className="t">가나 퀴즈</div>
           <div className="d">가나 ↔ 로마자</div>
         </button>
         <button className="action" onClick={() => onKanaLearn('hira')}>
-          <div className="ico">🎴</div>
+          <div className="ico"><Icon name="cards" /></div>
           <div className="t">히라가나 학습</div>
           <div className="d">플래시카드 + 예시</div>
         </button>
         <button className="action" onClick={() => onKanaLearn('kata')}>
-          <div className="ico">🎴</div>
+          <div className="ico"><Icon name="cards" /></div>
           <div className="t">가타카나 학습</div>
           <div className="d">플래시카드 + 예시</div>
         </button>
@@ -112,12 +113,12 @@ export default function JpDashboard({
 
       <div className="action-grid" style={{ marginTop: 12 }}>
         <button className="action" onClick={onVocab}>
-          <div className="ico">🎴</div>
+          <div className="ico"><Icon name="cards" /></div>
           <div className="t">단어 학습</div>
           <div className="d">예문과 함께 암기</div>
         </button>
         <button className="action" onClick={onVocabQuiz}>
-          <div className="ico">✏️</div>
+          <div className="ico"><Icon name="quiz" /></div>
           <div className="t">단어 퀴즈</div>
           <div className="d">4지선다 뜻 맞히기</div>
         </button>

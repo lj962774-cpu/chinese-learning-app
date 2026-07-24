@@ -3,6 +3,7 @@ import { JP_WORDS, jpDisplay } from './data'
 import { buildJpQueue } from './jpSession'
 import { useJp } from './JpContext'
 import { speakJa, speechSupported } from '../lib/speech'
+import Icon from '../components/Icon'
 
 // N5 단어 플래시카드: 단어 → 읽기·뜻·예문. 간격 반복(SRS)으로 채점.
 export default function JpFlashcards({ onDone }: { onDone: () => void }) {
@@ -59,6 +60,7 @@ export default function JpFlashcards({ onDone }: { onDone: () => void }) {
         </div>
 
         <div className="flashcard" onClick={() => setFlipped((f) => !f)}>
+          <div className="fc-face" key={flipped ? 'back' : 'front'}>
           {!flipped ? (
             <>
               <div className="jp-word">{jpDisplay(w)}</div>
@@ -79,7 +81,7 @@ export default function JpFlashcards({ onDone }: { onDone: () => void }) {
                   }}
                   aria-label="발음 듣기"
                 >
-                  🔊
+                  <Icon name="speaker" size={20} />
                 </button>
               )}
               {w.example && (
@@ -91,15 +93,16 @@ export default function JpFlashcards({ onDone }: { onDone: () => void }) {
               )}
             </>
           )}
+          </div>
         </div>
 
         {flipped ? (
           <div className="grade-row">
             <button className="btn wrong" onClick={() => grade(false)}>
-              ✗ 또 볼래요
+              <Icon name="close" size={18} /> 또 볼래요
             </button>
             <button className="btn right" onClick={() => grade(true)}>
-              ✓ 외웠어요
+              <Icon name="check" size={18} /> 외웠어요
             </button>
           </div>
         ) : (

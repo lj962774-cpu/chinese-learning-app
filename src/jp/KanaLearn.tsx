@@ -4,6 +4,7 @@ import { kanaBy } from './data'
 import { buildJpQueue } from './jpSession'
 import { useJp } from './JpContext'
 import { speakJa, speechSupported } from '../lib/speech'
+import Icon from '../components/Icon'
 
 // 가나 플래시카드: 가나 → 로마자·예시. 간격 반복(SRS)으로 채점.
 export default function KanaLearn({
@@ -80,6 +81,7 @@ export default function KanaLearn({
         </div>
 
         <div className="flashcard" onClick={() => setFlipped((f) => !f)}>
+          <div className="fc-face" key={flipped ? 'back' : 'front'}>
           {!flipped ? (
             <>
               <div className="kana-big">{k.kana}</div>
@@ -98,7 +100,7 @@ export default function KanaLearn({
                   }}
                   aria-label="발음 듣기"
                 >
-                  🔊
+                  <Icon name="speaker" size={20} />
                 </button>
               )}
               {k.ex && (
@@ -110,15 +112,16 @@ export default function KanaLearn({
               )}
             </>
           )}
+          </div>
         </div>
 
         {flipped ? (
           <div className="grade-row">
             <button className="btn wrong" onClick={() => grade(false)}>
-              ✗ 또 볼래요
+              <Icon name="close" size={18} /> 또 볼래요
             </button>
             <button className="btn right" onClick={() => grade(true)}>
-              ✓ 외웠어요
+              <Icon name="check" size={18} /> 외웠어요
             </button>
           </div>
         ) : (

@@ -3,6 +3,7 @@ import { LEVELS, wordsByLevel } from '../data/hsk'
 import { useApp, useStats } from '../context/AppContext'
 import { levelColor, levelLabel } from '../lib/levels'
 import { LangSwitch } from '../lang'
+import Icon from './Icon'
 
 export default function Dashboard({
   onLearn,
@@ -36,8 +37,8 @@ export default function Dashboard({
           </div>
           <h2 style={{ fontSize: 22, marginTop: 2 }}>오늘도 加油! 加油(jiāyóu) 화이팅!</h2>
         </div>
-        <button onClick={onProfile} style={{ fontSize: 24 }} aria-label="프로필">
-          ⚙️
+        <button className="icon-btn" onClick={onProfile} aria-label="설정 · 프로필">
+          <Icon name="settings" size={22} />
         </button>
       </div>
 
@@ -58,7 +59,10 @@ export default function Dashboard({
           }}
           onClick={() => onLearn()}
         >
-          {stats.due > 0 ? `🎴 복습 시작 (${stats.due}개 대기)` : '🎴 오늘 학습 시작'}
+          <span className="btn-ico">
+            <Icon name="cards" size={19} />
+            {stats.due > 0 ? `복습 시작 (${stats.due}개 대기)` : '오늘 학습 시작'}
+          </span>
         </button>
       </div>
 
@@ -80,32 +84,32 @@ export default function Dashboard({
       <div className="section-title">바로 학습하기</div>
       <div className="action-grid">
         <button className="action" onClick={() => onLearn()}>
-          <div className="ico">🎴</div>
+          <div className="ico"><Icon name="cards" /></div>
           <div className="t">플래시카드</div>
           <div className="d">간격 반복으로 암기</div>
         </button>
         <button className="action" onClick={() => onQuiz()}>
-          <div className="ico">✏️</div>
+          <div className="ico"><Icon name="quiz" /></div>
           <div className="t">퀴즈</div>
           <div className="d">4지선다 실력 점검</div>
         </button>
         <button className="action" onClick={() => onProduce()}>
-          <div className="ico">⌨️</div>
+          <div className="ico"><Icon name="keyboard" /></div>
           <div className="t">생산 퀴즈</div>
           <div className="d">병음 직접 입력 (회상↑)</div>
         </button>
         <button className="action" onClick={() => onCloze()}>
-          <div className="ico">📝</div>
+          <div className="ico"><Icon name="cloze" /></div>
           <div className="t">빈칸 채우기</div>
           <div className="d">예문 맥락 학습</div>
         </button>
         <button className="action" onClick={onFavorites}>
-          <div className="ico">⭐</div>
+          <div className="ico"><Icon name="bookmark" /></div>
           <div className="t">즐겨찾기 복습</div>
           <div className="d">저장한 단어만</div>
         </button>
         <button className={`action ${stats.due > 0 ? 'due' : ''}`} onClick={() => onLearn()}>
-          <div className="ico">⏰</div>
+          <div className="ico"><Icon name="clock" /></div>
           <div className="t">복습 대기 {stats.due}</div>
           <div className="d">오늘 복습할 단어</div>
         </button>

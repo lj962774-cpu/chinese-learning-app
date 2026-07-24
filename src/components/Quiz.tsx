@@ -4,6 +4,7 @@ import { useApp } from '../context/AppContext'
 import { WORDS, wordsByLevel } from '../data/hsk'
 import { levelLabel } from '../lib/levels'
 import { speak, speechSupported } from '../lib/speech'
+import Icon from './Icon'
 
 interface Question {
   word: Word
@@ -101,7 +102,7 @@ export default function Quiz({
             onClick={() => speak(q.word.hanzi)}
             aria-label="발음 듣기"
           >
-            🔊
+            <Icon name="speaker" size={20} />
           </button>
         )}
       </div>
