@@ -26,6 +26,11 @@ class Config:
     shuffle: bool = True
     notify: bool = True
     auto_advance: bool = True
+    # 하단 가로바(WordBar) 전용 설정
+    font_size: int = 14
+    bottom_margin: int = 48          # 작업표시줄 높이만큼 띄우는 여백(px)
+    bar_x: int | None = None         # 저장된 바 위치(없으면 기본 우측 하단)
+    bar_y: int | None = None
 
     @classmethod
     def load(cls) -> "Config":
@@ -49,6 +54,10 @@ class Config:
         self.shuffle = bool(self.shuffle)
         self.notify = bool(self.notify)
         self.auto_advance = bool(self.auto_advance)
+        self.font_size = min(48, max(8, int(self.font_size)))
+        self.bottom_margin = min(400, max(0, int(self.bottom_margin)))
+        self.bar_x = None if self.bar_x is None else int(self.bar_x)
+        self.bar_y = None if self.bar_y is None else int(self.bar_y)
 
     def save(self) -> None:
         self.sanitize()

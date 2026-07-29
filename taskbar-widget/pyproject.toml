@@ -15,6 +15,7 @@ dependencies = [
 ]
 
 [project.scripts]
+chinese-bar = "chinese_taskbar.bar:main"
 chinese-taskbar = "chinese_taskbar.app:main"
 
 [tool.setuptools]

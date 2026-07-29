@@ -13,7 +13,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data" / "hsk-words.json"
-ENTRY = ROOT / "run.pyw"
+# 기본은 하단 가로바(run_bar.pyw). 트레이 버전을 빌드하려면 run.pyw 로 바꾸세요.
+ENTRY = ROOT / "run_bar.pyw"
 
 # PyInstaller 의 --add-data 구분자는 Windows 는 ';', 그 외는 ':'
 sep = ";" if sys.platform.startswith("win") else ":"
@@ -24,7 +25,7 @@ def main() -> int:
         sys.executable, "-m", "PyInstaller",
         "--onefile",
         "--noconsole",
-        "--name", "ChineseTaskbar",
+        "--name", "ChineseBar",
         "--add-data", f"{DATA}{sep}data",
         "--paths", str(ROOT / "src"),
         str(ENTRY),
