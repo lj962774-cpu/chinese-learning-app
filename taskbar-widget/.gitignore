@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+*.spec
+.venv/
+venv/
+env/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# 설정(런타임 생성)
+config.json

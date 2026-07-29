@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "chinese-taskbar"
+version = "0.1.0"
+description = "작업표시줄(시스템 트레이)에 HSK 중국어 단어를 띄우는 Windows 앱"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+dependencies = [
+    "pystray>=0.19.5",
+    "Pillow>=10.0.0",
+]
+
+[project.scripts]
+chinese-taskbar = "chinese_taskbar.app:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"chinese_taskbar" = ["../../data/hsk-words.json"]
