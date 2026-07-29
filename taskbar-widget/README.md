@@ -24,11 +24,15 @@ Python 3.9 이상이 필요합니다.
 cd taskbar-widget
 pip install -r requirements.txt
 
-# 콘솔 창 없이 실행
+# 실행 (콘솔 로그 보면서 — 오류 확인에 좋음)
+python run.pyw
+
+# 콘솔 창 없이 조용히 실행
 pythonw run.pyw
-# 또는 (콘솔 로그 보면서)
-python -m chinese_taskbar
 ```
+
+> `python -m chinese_taskbar` 로 실행하려면 먼저 `pip install .` (마침표 포함)
+> 으로 패키지를 설치해야 합니다. 소스에서 바로 쓸 땐 `python run.pyw` 가 가장 간단합니다.
 
 실행하면 작업표시줄 오른쪽 트레이 영역에 아이콘이 나타납니다.
 (아이콘이 숨겨져 있으면 트레이의 `^` 를 눌러 펼치거나, 작업표시줄 설정에서 항상 표시로 바꾸세요.)
